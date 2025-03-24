@@ -14,7 +14,7 @@
     <div class="container-fluid vw-100 vh-100 p-2 d-flex">
         
         <!-- sidebar  -->
-        <div class="collapse shadow col-6 col-sm-3 col-md-2 col-lg-2 m-1 m-lg-3 m-sm-2 m-md-3  d-flex flex-column" id="sidebar">
+        <div class="shadow col-6 col-sm-3 col-md-2 col-lg-2 m-1 m-lg-3 m-sm-2 m-md-3  d-flex flex-column" id="sidebar">
             
             <!-- sidebar-top -->
             <div class="sidebar-top bg-white flex-grow-1">
@@ -47,33 +47,75 @@
         </div>
         
         <!-- search-content-area -->
-        <div class="content-area shadow col m-1 m-sm-2 m-md-3">
+        <div class="content-area shadow col m-1 m-sm-2 m-md-3 ms-md-0 ms-sm-0 ms-0">
 
             <!-- topbar -->
-            <div class="d-flex flex-column justify-content-front ">
+            <div class="d-flex shadow  justify-content-front ">
                 <!-- sidebar-toggle-button -->
-                <div class="mx-2 mt-1">
+                <div class="m-2">
                     <button class="btn btn-primary border border-light" id="toggle-sidebar">
                         <i class="bi bi-list"></i>
                     </button>
                 </div>
-
                 <!-- topbar-brand -->
                 <div class="ps-2 d-flex align-items-center">
-                    <label class="text-black mb-0 fw-bold" style="font-size: 1.5rem;">User Profile</label>
-                </div>
-
-
-
-                <div>
-                    <!-- Add any other topbar content here if needed -->
+                    <label class="text-black mb-0 fw-bold" style="font-size: 1.5rem;">User Dossier</label>
                 </div>
             </div>
                
             <!-- content  -->        
-            <div class="content-area">Content Area</div>
+            <div class="container p-3">
+                <div class="row">
+                    <div class="col-md-4 d-flex flex-column align-items-center">
+                        <img src="../images/profile-placeholder.png" id="profile-pic" class="img-fluid rounded-circle" 
+        style="width: 150px; height: 150px; cursor: pointer; display: none;" 
+        alt="User Profile">
+    <i id="default-icon" class="bi bi-person-circle text-secondary" 
+        style="font-size: 150px; cursor: pointer;"></i>
+
+                    </div>
+                    <div class="col-md-8">
+                        <h5>Date of Birth: <span id="dob">01 Jan 1990</span></h5>
+                        <h5>Phone: <span id="phone">+1234567890</span></h5>
+                        <h5>Email: <span id="email">user@example.com</span></h5>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12">Additional User Details Here</div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12">Other Relevant Information</div>
+                </div>
+            </div>
         </div>
     </div>
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Profile Photo</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <button class="btn btn-primary w-100 mb-2">View Photo</button>
+                    <button class="btn btn-secondary w-100">Change Photo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- script-for-toggling-sidebar -->
+    <script>
+        $('#toggle-sidebar').click(function() {
+        var sidebar = $('#sidebar');
+        if (sidebar.width() > 0) {
+            sidebar.css('width', '0');
+
+        } else {
+            sidebar.css('width', '250px');
+        }
+    });
+    </script>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
