@@ -1,34 +1,34 @@
 .notification-card {
     cursor: pointer;
-}
-.notification-card.unread {
-    background-color: #f8d7da; /* Red color for unread notifications */
-}
-.notification-card.read {
-    background-color: #d4edda; /* Green color for read notifications */
+    background-color: #fefdfd; 
 }
 .notification-content {
     display: none; /* Ensure content is hidden initially */
-    background-color: #f1f1f1; /* Lighter background for content */
+    background-color: #f2ebeb; /* Lighter background for content */
     padding: 10px;
     margin-top: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shadow effect */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1); /* Adds shadow effect */
 }
-.remove-btn {
-    display: none; /* Hide remove button by default */
-}
+
 .notification-card.read .remove-btn {
     display: inline-block; /* Show remove button for read notifications */
 }
 .btn-box{
     min-width: 50px; 
 }
+.content-title-box{
+    background-color: #f2ebeb; 
+}
 .remove-btn {
+    display: none; /* Hide remove button by default */
+    align-self: flex-; 
     border: none;
-    color: red;
-    background-color: violet;
-    font-size: 1.2em;
+    color: rgb(132, 132, 132);
+    font-size: 2em;
     line-height: 1;
+}
+.remove-btn:hover{
+    color: red;
 }
 .notification-time {
     margin-left: auto;
@@ -38,24 +38,26 @@
 .type-box {
     display: inline-block; /* Ensure the box fits the text */
     width: auto; /* Adjust width based on content */
-    /* font-size: 0.3rem; 
-    padding: 0.5rem;  */
+    font-size: 0.5rem; 
+    padding: 0.3rem; 
 }
 
 .notification-time {
     align-self: flex-start; /* Align time to the top */
+    justify-content: right;
 }
 
 .type-box {
-    min-width: 20px;
+    min-width: 50px;
+    max-width: 50px;
     border-radius: 5px;
-    color: white;
+    color: rgb(255, 255, 255);
     font-weight: bold;
-
+    text-align: center;
 }
 .type-update {
-    background-color: purple;
+    background-color: rgb(82, 0, 155);
 }
 .type-upcoming {
-    background-color: pink;
+    background-color: rgb(208, 0, 114);
 }

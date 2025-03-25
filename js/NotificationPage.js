@@ -12,51 +12,34 @@ const notifications = [
 ];
 
 function renderNotifications() {
-    const notificationsList = $('#notificatios');
-    notificationsList.empty();
-    notifications.forEach(notification => {
-        const cardClass = notification.read 
-                                    ? 'read' 
-                                    : 'unread';
-        const removeButton = notification.read 
-                                     ?'<div class="cross-btn-box bg-black"><button class="btn btn-sm remove-btn">&times;</button></div>' 
-                                     : '<div class="cross-btn-box bg-black"><span></span></div>';
-        const typeClass = notification.type === "Update" 
-                                    ? "type-update" 
-                                    : "type-upcoming";
-        const card = $(`
-            <div class="list-group-item notification-card ${cardClass} d-flex justify-content-front align-items-center" data-id="${notification.id}">
-                ${removeButton}
-                <div class="d-flex flex-column align-items-center">
-                    <span class="type-box ${typeClass}">${notification.type}</span>
-                    <span>${notification.title}</span>
-                </div>
-                <span class="notification-time ml-auto">${notification.time}</span>
-            </div>
-            <div class="notification-content bg-light border shadow-sm">${notification.content}</div>
-        `);
-        notificationsList.append(card);
-    });
-}
-function renderNotifications() {
     const notificationsList = $('#notifications-list');
     notificationsList.empty();
     notifications.forEach(notification => {
         const cardClass = notification.read ? 'read' : 'unread';
-        const removeButton = notification.read 
-            ? '<div class="col-2 btn-box bg-success">aada</div>' 
-            : '<div class="col-2 btn-box bg-success">dadad</div>';
         const typeClass = notification.type === "Update" ? "type-update" : "type-upcoming";
+
+        // Define the remove button inside the btn-box
+        const removeButton = notification.read 
+            ? `<div class="col-1 col-sm-1 col-md-1 col-lg-1 d-flex align-items-center justify-content-center btn-box">
+                  <button class="btn btn-sm remove-btn">&times;</button>
+               </div>` 
+            : `<div class="col-1 col-sm-1 col-md-1 col-lg-1 btn-box remove-placeholder"></div>`;
+
         const card = $(`
-            <div class="list-group-item notification-card ${cardClass} d-flex flex-wrap" data-id="${notification.id}">
+            <div class="list-group-item notification-card mt-2 mx-2 mb-0  shadow-light ${cardClass} d-flex flex-wrap" data-id="${notification.id}">
                 ${removeButton}
-                <div class="col bg-warning d-flex flex-column">
-                    <span class="type-box ${typeClass} fs-5 fs-md-5 fs-lg-5">${notification.type}</span>
+                <div class="col-12 col-sm-12 col-md-11 col-lg-8 content-title-box d-flex flex-column">
+                    <span class="type-box mt-1 flex-wrap ${typeClass}">${notification.type}</span>
                     <span>${notification.title}</span>
                 </div>
-                <span class="notification-time">${notification.time}</span>
+                <div class="notification-time col-12 col-sm-12 col-md-4 col-lg-3 d-flex align-items-center">
+                    <i class="bi bi-clock"></i>
+                    <div class="p-0 mx-2">${notification.time}</div>
+                </div>
             </div>
+            <div class="notification-content mx-4 mt-0 mb-4 shadow">${notification.content}</div>
         `);
+
         notificationsList.append(card);
     });
 }
@@ -74,7 +57,10 @@ $(document).on('click', '.notification-card', function() {
         if (notification) {
             notification.read = true;
         }
-        card.find('.remove-placeholder').replaceWith('<div class="cross-btn-box bg-black"><button class="btn btn-sm remove-btn">&times;</button></div>');
+        card.find('.remove-placeholder').
+            replaceWith(`<div class="col-1 col-sm-1 col-md-1 col-lg-1 d-flex align-items-center justify-content-center btn-box">
+                  <button class="btn btn-sm remove-btn">&times;</button>
+               </div>`  );
     }
 });
 
