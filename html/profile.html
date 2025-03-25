@@ -6,7 +6,6 @@
     <title>User Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../css/userProfile.css">
 </head>
 <body>
@@ -19,16 +18,16 @@
             <!-- sidebar-top -->
             <div class="sidebar-top bg-white flex-grow-1">
                 <div class="sidebar-tiles mt-0 my-1 shadow-custom w-100">
-                    <a href="#"><i class="bi bi-grid me-2"></i> Organize</a>
+                    <a href="organize.html"><i class="bi bi-grid me-2"></i> Organize</a>
                 </div>
                 <div class="sidebar-tiles mt-0 my-1 shadow-custom w-100">
-                    <a href="#"><i class="bi bi-speedometer2 me-2"></i> Doctor Dashboard</a>
+                    <a href="doctorDashboard.html"><i class="bi bi-speedometer2 me-2"></i> Doctor Dashboard</a>
                 </div>
                 <div class="sidebar-tiles mt-0 my-1 shadow-custom w-100">
-                    <a href="#"><i class="bi bi-calendar-check me-2"></i> Manage Appointment</a>
+                    <a href="manageAppointment.html"><i class="bi bi-calendar-check me-2"></i> Manage Appointment</a>
                 </div>
                 <div class="sidebar-tiles mt-0 my-1 shadow-custom w-100">
-                    <a href="#"><i class="bi bi-bell me-2"></i> Notifications</a>
+                    <a href="notifications.html"><i class="bi bi-bell me-2"></i> Notifications</a>
                 </div>
             </div>
             
@@ -38,10 +37,10 @@
             <!-- sidebar-bottom -->
             <div class="sidebar-bottom bg-white flex-grow-0">
                 <div class="sidebar-tiles  my-1 shadow-custom w-100">
-                    <a href="#"><i class="bi bi-gear me-2"></i> System Settings</a>
+                    <a href="systemSettings.html"><i class="bi bi-gear me-2"></i> System Settings</a>
                 </div>
                 <div class="sidebar-tiles mb-0 my-1 shadow-custom w-100">
-                    <a href="#"><i class="bi bi-box-arrow-right me-2"></i> Log Out</a>
+                    <a href="#" id="logout"><i class="bi bi-box-arrow-right me-2"></i> Log Out</a>
                 </div>
             </div>
         </div>
@@ -50,7 +49,7 @@
         <div class="content-area shadow col m-1 m-sm-2 m-md-3 ms-md-0 ms-sm-0 ms-0">
 
             <!-- topbar -->
-            <div class="d-flex shadow  justify-content-front ">
+            <div class="d-flex shadow justify-content-between">
                 <!-- sidebar-toggle-button -->
                 <div class="m-2">
                     <button class="btn btn-primary border border-light" id="toggle-sidebar">
@@ -61,61 +60,51 @@
                 <div class="ps-2 d-flex align-items-center">
                     <label class="text-black mb-0 fw-bold" style="font-size: 1.5rem;">User Dossier</label>
                 </div>
+                <!-- edit button -->
+                <div class="m-2">
+                    <button class="btn btn-secondary" id="edit-user">Edit</button>
+                </div>
             </div>
                
             <!-- content  -->        
-            <div class="container p-3">
-                <div class="row">
-                    <div class="col-md-4 d-flex flex-column align-items-center">
-                        <img src="../images/profile-placeholder.png" id="profile-pic" class="img-fluid rounded-circle" 
-        style="width: 150px; height: 150px; cursor: pointer; display: none;" 
-        alt="User Profile">
-    <i id="default-icon" class="bi bi-person-circle text-secondary" 
-        style="font-size: 150px; cursor: pointer;"></i>
-
-                    </div>
-                    <div class="col-md-8">
-                        <h5>Date of Birth: <span id="dob">01 Jan 1990</span></h5>
-                        <h5>Phone: <span id="phone">+1234567890</span></h5>
-                        <h5>Email: <span id="email">user@example.com</span></h5>
-                    </div>
-                </div>
-                <div class="row mt-4">
-                    <div class="col-12">Additional User Details Here</div>
-                </div>
-                <div class="row mt-4">
-                    <div class="col-12">Other Relevant Information</div>
-                </div>
+            <div class="container p-3" id="user-info">
+                <!-- User info will be dynamically inserted here -->
             </div>
         </div>
     </div>
-    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+
+    <!-- Modal for adding/editing user info -->
+    <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 class="modal-title">Profile Photo</h2>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h2 class="modal-title" id="userModalLabel">User Info</h2>
+                   -dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <button class="btn btn-primary w-100 mb-2">View Photo</button>
-                    <button class="btn btn-secondary w-100">Change Photo</button>
+                    <form id="user-form">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                           Date of Birth</label>
+                            <input type="date" class="form-control" id="dob" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- script-for-toggling-sidebar -->
-    <script>
-        $('#toggle-sidebar').click(function() {
-        var sidebar = $('#sidebar');
-        if (sidebar.width() > 0) {
-            sidebar.css('width', '0');
-
-        } else {
-            sidebar.css('width', '250px');
-        }
-    });
-    </script>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

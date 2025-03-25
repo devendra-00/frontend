@@ -4,16 +4,13 @@ body {
 }
 #sidebar {
     max-width: 220px;
-    
     overflow: hidden;
-    /* display: none; Initially hide the sidebar */ 
     transition: all 0.3s ease;
 }
 #sidebar.collapsed {
     width: 0;
-    padding: 0; /* Ensures no spacing remains */
+    padding: 0;
 }
-/* Sidebar tiles hover effect */
 .sidebar-tiles a {
     display: block;
     padding: 10px;
@@ -21,24 +18,19 @@ body {
     color: black;
     transition: background-color 0.3s, color 0.3s;
 }
-
 .sidebar-tiles a:hover {
-    background-color: #dcdee0; /* Change to your desired hover background color */
-    color: black; /* Change to your desired hover text color */
+    background-color: #dcdee0;
+    color: black;
 }
-
-#toggle-sidebar{
-    background-color:#dcdee0 ;
+#toggle-sidebar {
+    background-color: #dcdee0;
     color: black;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
 }
-#toggle-sidebar:hover{
-    background-color:#f2fcff ;
+#toggle-sidebar:hover {
+    background-color: #f2fcff;
     color: rgb(0, 22, 41);
 }
-#topbar{
-    max-height: 6px;
-}
 .shadow-custom {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Adjust the values to reduce the shadow */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }

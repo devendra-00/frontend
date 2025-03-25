@@ -1,0 +1,61 @@
+.notification-card {
+    cursor: pointer;
+}
+.notification-card.unread {
+    background-color: #f8d7da; /* Red color for unread notifications */
+}
+.notification-card.read {
+    background-color: #d4edda; /* Green color for read notifications */
+}
+.notification-content {
+    display: none; /* Ensure content is hidden initially */
+    background-color: #f1f1f1; /* Lighter background for content */
+    padding: 10px;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shadow effect */
+}
+.remove-btn {
+    display: none; /* Hide remove button by default */
+}
+.notification-card.read .remove-btn {
+    display: inline-block; /* Show remove button for read notifications */
+}
+.btn-box{
+    min-width: 50px; 
+}
+.remove-btn {
+    border: none;
+    color: red;
+    background-color: violet;
+    font-size: 1.2em;
+    line-height: 1;
+}
+.notification-time {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+}
+.type-box {
+    display: inline-block; /* Ensure the box fits the text */
+    width: auto; /* Adjust width based on content */
+    /* font-size: 0.3rem; 
+    padding: 0.5rem;  */
+}
+
+.notification-time {
+    align-self: flex-start; /* Align time to the top */
+}
+
+.type-box {
+    min-width: 20px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+
+}
+.type-update {
+    background-color: purple;
+}
+.type-upcoming {
+    background-color: pink;
+}
